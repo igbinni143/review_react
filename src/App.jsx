@@ -1,11 +1,25 @@
+import { useState } from 'react';
 import './App.css';
-import Register from './assets/components/Register';
+import { Controller } from './assets/components/Simple_Counter/Controller';
+import { Viewer } from './assets/components/Simple_Counter/Viewer';
 
 function App() {
+	const [count, setCount] = useState(0);
+	const onClickButton = (value) => {
+		setCount(count + value);
+	};
+
 	return (
-		<>
-			<Register />
-		</>
+		<div className='App'>
+			<h1>Simple Counter</h1>
+
+			<section>
+				<Viewer count={count} />
+			</section>
+			<section>
+				<Controller onClickButton={onClickButton} />
+			</section>
+		</div>
 	);
 }
 
